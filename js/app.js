@@ -6,8 +6,10 @@ const widthPicked = document.querySelector('#inputWidth').value;
 const heightPicked = document.querySelector('#inputHeight').value;
 
 // When size is submitted by the user, call makeGrid()
+const submitButton = document.getElementById('submitButton');
+submitButton.addEventListener("click", makeGrid);
 
 function makeGrid() {
-    // Your code goes here!
+  
   }
   
