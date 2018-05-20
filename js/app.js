@@ -1,6 +1,7 @@
 
 (document.getElementById('sizePicker')).addEventListener("submit", function(e) {
   e.preventDefault();
+  (document.querySelector('#pixelCanvas')).innerHTML = "";
   makeGrid();
   (document.getElementById('button')).style.display = "inline-block";
 });
@@ -19,8 +20,9 @@ function makeGrid() {
 }
 
 
-(document.querySelector('table')).addEventListener("click", function(evt) {
+(document.querySelector('#pixelCanvas')).addEventListener("click", function(evt) {
   evt.target.style.backgroundColor = (document.querySelector('#colorPicker')).value;
+
 });
 
 (document.getElementById('button')).addEventListener("click", function() {
