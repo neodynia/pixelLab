@@ -1,57 +1,11 @@
-Audrinaline[FEND][< 1 minute ago]
-const colorPicker = document.querySelector(‘#colorPicker’);
-const sizePicker = document.querySelector(‘#sizePicker’);
-const pixelCanvas = document.querySelector(‘#pixelCanvas’);
-
-sizePicker.addEventListener(‘submit’, function (event) {
-    //prevent the page from reloading
-    event.preventDefault();
-
-    // Select size input
-    let heightSelector = document.querySelector(‘#inputHeight’);
-    let widthSelector = document.querySelector(‘#inputWidth’);
-
-    let gridHeight = parseInt(heightSelector.value);
-    let gridWidth = parseInt(widthSelector.value);
-
-    //use the call to makeGrid() to make the table
-    pixelCanvas.innerHTML = makeGrid(gridHeight, gridWidth);
-});
-
-function changeColor(evt) {
-
-    evt.preventDefault();
-
-    if (evt.target.hasAttribute(‘style’)) {
-        evt.target.removeAttribute(‘style’);
-    } else {
-        evt.target.style.backgroundColor = colorPicker.value;
+//Make a height x width grid of table cells from the user selected values for height and width
+function makeGrid() {
+    let heightHTML = document.querySelector('#inputHeight');
+    let widthHTML = document.querySelector('#inputWidth');
+    for (let i = 0; i < heightHTML.value; i++) {
+        (document.querySelector('#pixelCanvas')).appendChild(document.createElement('tr'));
     }
-
-}
-
-pixelCanvas.addEventListener(‘click’, changeColor);
-
-
-function makeGrid(height, width) {
-
-    let pixelCanvas = document.querySelector(‘#pixelCanvas’);
-    pixelCanvas.innerHTML = ‘’;
-
-    //to create a new row until the grid has the correct height
-    for (let h = 0; h < height; h++) {
-        pixelCanvas.appendChild(document.createElement(‘tr’));
+    for (let j = 0; j < w; j++) {
+        (document.querySelector('tr')).appendChild(document.createElement('td'));
     }
-
-    let rows = document.querySelectorAll(‘tr’);
-
-    rows.forEach(function (row) {
-        for (let w = 0; w < width; w++) {
-            let newCell = document.createElement(‘td’);
-            row.appendChild(newCell);
-
-        }
-    });
-
-    return pixelCanvas.innerHTML;
 }
